@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9420f1fb-a4f2-411a-b483-151f215317c2" name="变更" comment="Project initialization">
-      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+    <list default="true" id="9420f1fb-a4f2-411a-b483-151f215317c2" name="变更" comment="Add triggers &gt;&gt; README.md">
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/b4c8f093-7dd9-4c8b-a702-ead99faf31e4.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/b4c8f093-7dd9-4c8b-a702-ead99faf31e4.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +23,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/README.md" root0="SKIP_INSPECTION" root1="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -99,7 +102,7 @@
       <workItem from="1670219283897" duration="5380000" />
       <workItem from="1670466133444" duration="9035000" />
       <workItem from="1670505448756" duration="2431000" />
-      <workItem from="1670562574336" duration="34822000" />
+      <workItem from="1670562574336" duration="36167000" />
     </task>
     <task id="LOCAL-00001" summary="Project initialization">
       <created>1670587932561</created>
@@ -108,7 +111,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670587932561</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Add triggers &gt;&gt; README.md">
+      <created>1670609422034</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1670609422034</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -119,7 +129,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="main" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -128,7 +150,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="JFrame initialize" />
     <MESSAGE value="Project initialization" />
-    <option name="LAST_COMMIT_MESSAGE" value="Project initialization" />
+    <MESSAGE value="Add triggers &gt;&gt; README.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add triggers &gt;&gt; README.md" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

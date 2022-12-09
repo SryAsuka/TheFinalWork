@@ -131,9 +131,9 @@ A big final job for Java programming
         return  arrayList;
     }
 ```
-  - 修改管理员信息,根据姓名修改（无法修改管理员等级）  (形参 （旧名 + 新名 + ...） 除等级以外的，无返回值)
-  - 根据 管理员id 查找管理员信息（形参（姓名） 返回值arraylist）
-  - 删除管理员信息,根据姓名删除 （若等级为1，无法删除）（形参 （姓名） ，无返回值）
+  - 修改管理员信息,根据姓名修改（无法修改管理员等级）  (形参  除等级以外的，无返回值)
+  - 根据 管理员id 查找管理员信息（形参  返回值arraylist）
+  - 删除管理员信息,根据姓名删除 （若等级为1，无法删除）（形参  ，无返回值）
 
 >之后的要求差不多都是这样
 
@@ -154,26 +154,26 @@ A big final job for Java programming
   - 根据货物名修改货物信息
   
   ### 库存表
-  
-  - （增加/减少库存在 入库表/出库表 中）
+
   - 查看全部库存
   - 根据 货物名/仓库名 查看库存 （分开写两个方法 sql语句变一下）
-  - 根据 货物名/仓库名 删除库存 （同上）
   
   ### 入库表
   
-  - 增加入库信息（同时库存表 新增列 或 增加库存量 ）（需要点MySQL的知识）
+  - 增加入库信息
     > https://blog.csdn.net/weixin_43207025/article/details/106380505 [MySQL的触发器原理]
-  - 删除入库信息（同时库存表 减少库存量 同时 库存量为0则删除列）
+  - 删除入库信息
   - 查看全部入库信息
   
   ### 出库表
   
-  - 增加出库信息（同时库存表 减少库存量 ）
-  - 删除出库信息（同时库存表 恢复库存量）
+  - 增加出库信息（要进行判断 是否超出库存 超了数据不存入，重新输入，不超）
+  - 删除出库信息
   - 查看全部出库信息
   
-```ruby
+```mysql
+-- 数据库操作工具方法（navicat、sqlyog）
+
 truncate table stocks;
 truncate table istocks;
 truncate table ostocks;
@@ -200,24 +200,24 @@ BEGIN
 END;
 $$
 
-DELIMITER $$
-drop trigger if exists trigger_update_input;
-CREATE  TRIGGER trigger_update_input AFTER UPDATE ON istocks FOR EACH ROW
-BEGIN
-    SET @a=new.istocks;
-    SET @b=OLD.istocks;
-    SET @c=NEW.istocks-OLD.istocks;
-    SET @e=OLD.gname;
-    SET @f=OLD.wname;
-    if (select stocks.gname from stocks where stocks.gname = @e AND stocks.wname = @f ) is not null then
-        if(select stocks.sstocks from stocks where stocks.sstocks + @c > 0 and stocks.gname = @e AND stocks.wname = @f ) is not null then
-            update stocks
-            set stocks.sstocks = stocks.sstocks + @c
-            where stocks.gname = @e and stocks.wname = @f;
-        end if;
-    end if;
-END;
-$$
+# DELIMITER $$
+# drop trigger if exists trigger_update_input;
+# CREATE  TRIGGER trigger_update_input AFTER UPDATE ON istocks FOR EACH ROW
+# BEGIN
+#     SET @a=new.istocks;
+#     SET @b=OLD.istocks;
+#     SET @c=NEW.istocks-OLD.istocks;
+#     SET @e=OLD.gname;
+#     SET @f=OLD.wname;
+#     if (select stocks.gname from stocks where stocks.gname = @e AND stocks.wname = @f ) is not null then
+#         if(select stocks.sstocks from stocks where stocks.sstocks + @c > 0 and stocks.gname = @e AND stocks.wname = @f ) is not null then
+#             update stocks
+#             set stocks.sstocks = stocks.sstocks + @c
+#             where stocks.gname = @e and stocks.wname = @f;
+#         end if;
+#     end if;
+# END;
+# $$
 
 DELIMITER $$
 drop trigger if exists trigger_delete_input;
@@ -237,6 +237,7 @@ BEGIN
 END;
 $$
 
+#要判定出库值与库存的差
 DELIMITER $$
 drop trigger if exists trigger_output;
 CREATE  TRIGGER trigger_output AFTER INSERT ON ostocks FOR EACH ROW
@@ -254,25 +255,25 @@ BEGIN
 END;
 $$
 
--- 要在方法中检查不能改过头了
-DELIMITER $$
-drop trigger if exists trigger_update_output;
-CREATE  TRIGGER trigger_update_output AFTER UPDATE ON ostocks FOR EACH ROW
-BEGIN
-    SET @a=new.ostocks;
-    SET @b=OLD.ostocks;
-    SET @c=NEW.ostocks-OLD.ostocks;
-    SET @e=OLD.gname;
-    SET @f=OLD.wname;
-    if (select stocks.gname from stocks where stocks.gname = @e AND stocks.wname = @f ) is not null then
-        if(select stocks.sstocks from stocks where stocks.sstocks - @c > 0 and stocks.gname = @e AND stocks.wname = @f ) is not null then
-            update stocks
-            set stocks.sstocks = stocks.sstocks - @c
-            where stocks.gname = @e and stocks.wname = @f;
-        end if;
-    end if;
-END;
-$$
+# -- 要在方法中检查不能改过头了
+# DELIMITER $$
+# drop trigger if exists trigger_update_output;
+# CREATE  TRIGGER trigger_update_output AFTER UPDATE ON ostocks FOR EACH ROW
+# BEGIN
+#     SET @a=new.ostocks;
+#     SET @b=OLD.ostocks;
+#     SET @c=NEW.ostocks-OLD.ostocks;
+#     SET @e=OLD.gname;
+#     SET @f=OLD.wname;
+#     if (select stocks.gname from stocks where stocks.gname = @e AND stocks.wname = @f ) is not null then
+#         if(select stocks.sstocks from stocks where stocks.sstocks - @c > 0 and stocks.gname = @e AND stocks.wname = @f ) is not null then
+#             update stocks
+#             set stocks.sstocks = stocks.sstocks - @c
+#             where stocks.gname = @e and stocks.wname = @f;
+#         end if;
+#     end if;
+# END;
+# $$
 
 DELIMITER $$
 drop trigger if exists trigger_delete_output;
@@ -298,5 +299,4 @@ insert into ostocks values ('T001','苹果','仓库A',1,'张三',now());
 insert into ostocks values ('T002','苹果','仓库A',2,'张三',now());
 insert into ostocks values ('T003','香蕉','仓库A',1,'张三',now());
 insert into ostocks values ('T004','香蕉','仓库A',3,'张三',now());
-
 ```

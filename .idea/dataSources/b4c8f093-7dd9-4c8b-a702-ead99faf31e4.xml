@@ -15359,167 +15359,204 @@ User</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="2824" parent="567" name="oid">
+    <trigger id="2824" parent="566" name="trigger_input">
+      <Definer>root@localhost</Definer>
+      <Events>I</Events>
+      <SourceTextLength>393</SourceTextLength>
+      <Turn>after-row</Turn>
+    </trigger>
+    <trigger id="2825" parent="566" name="trigger_update_input">
+      <Definer>root@localhost</Definer>
+      <Events>U</Events>
+      <SourceTextLength>299</SourceTextLength>
+      <Turn>after-row</Turn>
+    </trigger>
+    <trigger id="2826" parent="566" name="trigger_delete_input">
+      <Definer>root@localhost</Definer>
+      <Events>D</Events>
+      <SourceTextLength>191</SourceTextLength>
+      <Turn>after-row</Turn>
+    </trigger>
+    <column id="2827" parent="567" name="oid">
       <DataType>char(4)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="2825" parent="567" name="gname">
+    <column id="2828" parent="567" name="gname">
       <DataType>varchar(20)|0s</DataType>
       <Position>2</Position>
     </column>
-    <column id="2826" parent="567" name="wname">
+    <column id="2829" parent="567" name="wname">
       <DataType>varchar(20)|0s</DataType>
       <Position>3</Position>
     </column>
-    <column id="2827" parent="567" name="ostocks">
+    <column id="2830" parent="567" name="ostocks">
       <DataType>int|0s</DataType>
       <Position>4</Position>
     </column>
-    <column id="2828" parent="567" name="uname">
+    <column id="2831" parent="567" name="uname">
       <DataType>varchar(20)|0s</DataType>
       <Position>5</Position>
     </column>
-    <column id="2829" parent="567" name="odate">
+    <column id="2832" parent="567" name="odate">
       <DataType>date|0s</DataType>
       <Position>6</Position>
     </column>
-    <foreign-key id="2830" parent="567" name="ostocks_ibfk_1">
+    <foreign-key id="2833" parent="567" name="ostocks_ibfk_1">
       <ColNames>gname</ColNames>
       <RefColNames>gname</RefColNames>
       <RefTableName>goods</RefTableName>
     </foreign-key>
-    <foreign-key id="2831" parent="567" name="ostocks_ibfk_2">
+    <foreign-key id="2834" parent="567" name="ostocks_ibfk_2">
       <ColNames>wname</ColNames>
       <RefColNames>wname</RefColNames>
       <RefTableName>wh</RefTableName>
     </foreign-key>
-    <foreign-key id="2832" parent="567" name="ostocks_ibfk_3">
+    <foreign-key id="2835" parent="567" name="ostocks_ibfk_3">
       <ColNames>uname</ColNames>
       <RefColNames>uname</RefColNames>
       <RefTableName>user</RefTableName>
     </foreign-key>
-    <index id="2833" parent="567" name="PRIMARY">
+    <index id="2836" parent="567" name="PRIMARY">
       <ColNames>oid</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="2834" parent="567" name="gname">
+    <index id="2837" parent="567" name="gname">
       <ColNames>gname</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="2835" parent="567" name="wname">
+    <index id="2838" parent="567" name="wname">
       <ColNames>wname</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="2836" parent="567" name="uname">
+    <index id="2839" parent="567" name="uname">
       <ColNames>uname</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="2837" parent="567" name="PRIMARY">
+    <key id="2840" parent="567" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="2838" parent="568" name="sid">
-      <DataType>char(4)|0s</DataType>
+    <trigger id="2841" parent="567" name="trigger_output">
+      <Definer>root@localhost</Definer>
+      <Events>I</Events>
+      <SourceTextLength>482</SourceTextLength>
+      <Turn>after-row</Turn>
+    </trigger>
+    <trigger id="2842" parent="567" name="trigger_update_output">
+      <Definer>root@localhost</Definer>
+      <Events>U</Events>
+      <SourceTextLength>546</SourceTextLength>
+      <Turn>after-row</Turn>
+    </trigger>
+    <trigger id="2843" parent="567" name="trigger_delete_output">
+      <Definer>root@localhost</Definer>
+      <Events>D</Events>
+      <SourceTextLength>336</SourceTextLength>
+      <Turn>after-row</Turn>
+    </trigger>
+    <column id="2844" parent="568" name="sid">
+      <AutoIncrement>1</AutoIncrement>
+      <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="2839" parent="568" name="gname">
+    <column id="2845" parent="568" name="gname">
       <DataType>varchar(20)|0s</DataType>
       <Position>2</Position>
     </column>
-    <column id="2840" parent="568" name="wname">
+    <column id="2846" parent="568" name="wname">
       <DataType>varchar(20)|0s</DataType>
       <Position>3</Position>
     </column>
-    <column id="2841" parent="568" name="sstocks">
+    <column id="2847" parent="568" name="sstocks">
       <DataType>int|0s</DataType>
       <Position>4</Position>
     </column>
-    <foreign-key id="2842" parent="568" name="stocks_ibfk_1">
+    <foreign-key id="2848" parent="568" name="stocks_ibfk_1">
       <ColNames>gname</ColNames>
       <RefColNames>gname</RefColNames>
       <RefTableName>goods</RefTableName>
     </foreign-key>
-    <foreign-key id="2843" parent="568" name="stocks_ibfk_2">
+    <foreign-key id="2849" parent="568" name="stocks_ibfk_2">
       <ColNames>wname</ColNames>
       <RefColNames>wname</RefColNames>
       <RefTableName>wh</RefTableName>
     </foreign-key>
-    <index id="2844" parent="568" name="PRIMARY">
+    <index id="2850" parent="568" name="PRIMARY">
       <ColNames>sid</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="2845" parent="568" name="gname">
+    <index id="2851" parent="568" name="gname">
       <ColNames>gname</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="2846" parent="568" name="wname">
+    <index id="2852" parent="568" name="wname">
       <ColNames>wname</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="2847" parent="568" name="PRIMARY">
+    <key id="2853" parent="568" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="2848" parent="569" name="uid">
+    <column id="2854" parent="569" name="uid">
       <DataType>char(4)|0s</DataType>
       <Position>1</Position>
     </column>
-    <column id="2849" parent="569" name="uacc">
+    <column id="2855" parent="569" name="uacc">
       <DataType>varchar(10)|0s</DataType>
       <Position>2</Position>
     </column>
-    <column id="2850" parent="569" name="upwd">
+    <column id="2856" parent="569" name="upwd">
       <DataType>varchar(16)|0s</DataType>
       <Position>3</Position>
     </column>
-    <column id="2851" parent="569" name="uname">
+    <column id="2857" parent="569" name="uname">
       <DataType>varchar(20)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
-    <column id="2852" parent="569" name="uphone">
+    <column id="2858" parent="569" name="uphone">
       <DataType>varchar(11)|0s</DataType>
       <Position>5</Position>
     </column>
-    <column id="2853" parent="569" name="upower">
+    <column id="2859" parent="569" name="upower">
       <DataType>int|0s</DataType>
       <Position>6</Position>
     </column>
-    <index id="2854" parent="569" name="PRIMARY">
+    <index id="2860" parent="569" name="PRIMARY">
       <ColNames>uname</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="2855" parent="569" name="PRIMARY">
+    <key id="2861" parent="569" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="2856" parent="570" name="wid">
+    <column id="2862" parent="570" name="wid">
       <DataType>char(4)|0s</DataType>
       <Position>1</Position>
     </column>
-    <column id="2857" parent="570" name="wname">
+    <column id="2863" parent="570" name="wname">
       <DataType>varchar(20)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="2858" parent="570" name="wadd">
+    <column id="2864" parent="570" name="wadd">
       <DataType>varchar(50)|0s</DataType>
       <Position>3</Position>
     </column>
-    <index id="2859" parent="570" name="PRIMARY">
+    <index id="2865" parent="570" name="PRIMARY">
       <ColNames>wname</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="2860" parent="570" name="PRIMARY">
+    <key id="2866" parent="570" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>

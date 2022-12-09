@@ -173,3 +173,130 @@ A big final job for Java programming
   - 删除出库信息（同时库存表 恢复库存量）
   - 查看全部出库信息
   
+```ruby
+truncate table stocks;
+truncate table istocks;
+truncate table ostocks;
+
+alter table warehouse.stocks
+    modify sid int  auto_increment;
+
+DELIMITER $$
+drop trigger if exists trigger_input;
+CREATE  TRIGGER trigger_input AFTER INSERT ON istocks FOR EACH ROW
+BEGIN
+    SET @a=NEW.gname;
+    SET @b=new.wname;
+    SET @d=new.istocks;
+    if (select stocks.gname from stocks where stocks.gname = @a AND stocks.wname = @b ) is  null then
+        insert into stocks(gname,wname,sstocks) values (@a,@b,@d);
+    else
+        update stocks
+        set stocks.sstocks = stocks.sstocks + @d
+        where stocks.gname = @a and stocks.wname = @b;
+        update stocks
+        set stocks.sid = sid - 1;
+    end if;
+END;
+$$
+
+DELIMITER $$
+drop trigger if exists trigger_update_input;
+CREATE  TRIGGER trigger_update_input AFTER UPDATE ON istocks FOR EACH ROW
+BEGIN
+    SET @a=new.istocks;
+    SET @b=OLD.istocks;
+    SET @c=NEW.istocks-OLD.istocks;
+    SET @e=OLD.gname;
+    SET @f=OLD.wname;
+    if (select stocks.gname from stocks where stocks.gname = @e AND stocks.wname = @f ) is not null then
+        if(select stocks.sstocks from stocks where stocks.sstocks + @c > 0 and stocks.gname = @e AND stocks.wname = @f ) is not null then
+            update stocks
+            set stocks.sstocks = stocks.sstocks + @c
+            where stocks.gname = @e and stocks.wname = @f;
+        end if;
+    end if;
+END;
+$$
+
+DELIMITER $$
+drop trigger if exists trigger_delete_input;
+CREATE  TRIGGER trigger_delete_input AFTER DELETE ON istocks FOR EACH ROW
+BEGIN
+    SET @b=OLD.istocks;
+    SET @e=OLD.gname;
+    SET @f=OLD.wname;
+
+    if (select stocks.gname from stocks where stocks.gname = @e AND stocks.wname = @f ) is not null then
+        if(select stocks.sstocks from stocks where stocks.sstocks  > @b and stocks.gname = @e AND stocks.wname = @f ) is not null then
+            update stocks
+            set stocks.sstocks = stocks.sstocks - @b
+            where stocks.gname = @e and stocks.wname = @f;
+        end if;
+    end if;
+END;
+$$
+
+DELIMITER $$
+drop trigger if exists trigger_output;
+CREATE  TRIGGER trigger_output AFTER INSERT ON ostocks FOR EACH ROW
+BEGIN
+    SET @b=NEW.ostocks;
+    SET @e=NEW.gname;
+    SET @f=NEW.wname;
+    if (select stocks.gname from stocks where stocks.gname = @e AND stocks.wname = @f ) is not null then
+        if(select stocks.sstocks from stocks where stocks.sstocks > @b and stocks.gname = @e AND stocks.wname = @f ) is not null then
+            update stocks
+            set stocks.sstocks = stocks.sstocks - @b
+            where stocks.gname = @e and stocks.wname = @f;
+        end if;
+    end if;
+END;
+$$
+
+-- 要在方法中检查不能改过头了
+DELIMITER $$
+drop trigger if exists trigger_update_output;
+CREATE  TRIGGER trigger_update_output AFTER UPDATE ON ostocks FOR EACH ROW
+BEGIN
+    SET @a=new.ostocks;
+    SET @b=OLD.ostocks;
+    SET @c=NEW.ostocks-OLD.ostocks;
+    SET @e=OLD.gname;
+    SET @f=OLD.wname;
+    if (select stocks.gname from stocks where stocks.gname = @e AND stocks.wname = @f ) is not null then
+        if(select stocks.sstocks from stocks where stocks.sstocks - @c > 0 and stocks.gname = @e AND stocks.wname = @f ) is not null then
+            update stocks
+            set stocks.sstocks = stocks.sstocks - @c
+            where stocks.gname = @e and stocks.wname = @f;
+        end if;
+    end if;
+END;
+$$
+
+DELIMITER $$
+drop trigger if exists trigger_delete_output;
+CREATE  TRIGGER trigger_delete_output AFTER DELETE ON ostocks FOR EACH ROW
+BEGIN
+    SET @b=OLD.ostocks;
+    SET @e=OLD.gname;
+    SET @f=OLD.wname;
+    if (select stocks.gname from stocks where stocks.gname = @e AND stocks.wname = @f ) is not null then
+            update stocks
+            set stocks.sstocks = stocks.sstocks + @b
+            where stocks.gname = @e and stocks.wname = @f;
+        end if;
+END;
+$$
+
+insert into istocks values ('I001','苹果','仓库A',5,'张三',now());
+insert into istocks values ('I002','苹果','仓库A',10,'张三',now());
+insert into istocks values ('I003','香蕉','仓库A',10,'张三',now());
+insert into istocks values ('I004','香蕉','仓库A',15,'张三',now());
+
+insert into ostocks values ('T001','苹果','仓库A',1,'张三',now());
+insert into ostocks values ('T002','苹果','仓库A',2,'张三',now());
+insert into ostocks values ('T003','香蕉','仓库A',1,'张三',now());
+insert into ostocks values ('T004','香蕉','仓库A',3,'张三',now());
+
+```

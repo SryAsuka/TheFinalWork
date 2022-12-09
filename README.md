@@ -186,8 +186,8 @@ drop trigger if exists trigger_input;
 CREATE  TRIGGER trigger_input AFTER INSERT ON istocks FOR EACH ROW
 BEGIN
     SET @a=NEW.gname;
-    SET @b=new.wname;
-    SET @d=new.istocks;
+    SET @b=NEW.wname;
+    SET @d=NEW.istocks;
     if (select stocks.gname from stocks where stocks.gname = @a AND stocks.wname = @b ) is  null then
         insert into stocks(gname,wname,sstocks) values (@a,@b,@d);
     else
@@ -204,7 +204,7 @@ DELIMITER $$
 drop trigger if exists trigger_update_input;
 CREATE  TRIGGER trigger_update_input AFTER UPDATE ON istocks FOR EACH ROW
 BEGIN
-    SET @a=new.istocks;
+    SET @a=NEW.istocks;
     SET @b=OLD.istocks;
     SET @c=NEW.istocks-OLD.istocks;
     SET @e=OLD.gname;
@@ -259,7 +259,7 @@ DELIMITER $$
 drop trigger if exists trigger_update_output;
 CREATE  TRIGGER trigger_update_output AFTER UPDATE ON ostocks FOR EACH ROW
 BEGIN
-    SET @a=new.ostocks;
+    SET @a=NEW.ostocks;
     SET @b=OLD.ostocks;
     SET @c=NEW.ostocks-OLD.ostocks;
     SET @e=OLD.gname;

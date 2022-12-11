@@ -171,7 +171,7 @@ A big final job for Java programming
   - 删除出库信息
   - 查看全部出库信息
   
-```mysql
+```ruby
 -- 数据库操作工具方法（navicat、sqlyog）
 
 truncate table stocks;

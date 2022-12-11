@@ -3,7 +3,7 @@ package model;
 public class User {
     private String Uid;
     private String UAcc;
-    private String WPwd;
+    private String UPwd;
     private String UName;
     private String UPhone;
     //管理员等级 1：最高管理员 2：普通仓管
@@ -25,12 +25,12 @@ public class User {
         this.UAcc = UAcc;
     }
 
-    public String getWPwd() {
-        return WPwd;
+    public String getUPwd() {
+        return UPwd;
     }
 
-    public void setWPwd(String WPwd) {
-        this.WPwd = WPwd;
+    public void setUPwd(String UPwd) {
+        this.UPwd = UPwd;
     }
 
     public String getUName() {

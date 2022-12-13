@@ -3,15 +3,16 @@ package JFrame;
 import dao.UserDao;
 import model.User;
 import utils.DbUtil;
+import utils.ToolUtil;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.sql.Connection;
 import java.util.Objects;
 
 public class LoginFrame extends JFrame {
 
-    public static User users;
     private final JFrame jFrame ;
     private final JTextField userName;
     private final JTextField userPwd;
@@ -25,7 +26,6 @@ public class LoginFrame extends JFrame {
 
         Font font = new Font("微软雅黑", Font.PLAIN, 16);
         jFrame = new JFrame("用户登录");
-        jFrame.getContentPane().setFont(font);
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         jFrame.setSize(435,320);
         jFrame.setLocationRelativeTo(null);                 //窗口设置中央，对有ImagePanelPanel面板的窗口无效
@@ -47,9 +47,9 @@ public class LoginFrame extends JFrame {
         JButton login = new JButton("登录");           //登录
         JButton register = new JButton("注册");        //注册
 
-        ButtonGroup buttonGroup = new ButtonGroup();
-        JRadioButton admin = new JRadioButton("最高管理员");
-        JRadioButton user = new JRadioButton("普通管理员");
+//        ButtonGroup buttonGroup = new ButtonGroup();
+//        JRadioButton admin = new JRadioButton("最高管理员");
+//        JRadioButton user = new JRadioButton("普通管理员");
 
         /* 登录界面的布局 */
         label1.setBounds(90,120,75,20);
@@ -81,7 +81,7 @@ public class LoginFrame extends JFrame {
 
         /* 点击事件 */
         register.addActionListener (this::Reg);     //lambda替换成方法引用
-        login.addActionListener(this::checkLogin);
+        login.addActionListener(this::check);
 
     }
 
@@ -90,8 +90,36 @@ public class LoginFrame extends JFrame {
         new RegFrame();
     }
 
-    private void checkLogin(ActionEvent e){
+    private void check(ActionEvent e){
+        String UAcc = userName.getText();
+        String UPwd = userPwd.getText();
+        if (ToolUtil.isEmpty(UAcc) || ToolUtil.isEmpty(UPwd)) {
+            JOptionPane.showMessageDialog(null, "用户名和密码不能为空");
+            return;
+        }
+        User user = new User();
+        user.setUAcc(UAcc);
+        user.setUPwd(UPwd);
+        Connection connection;
+        try{
+            connection = DbUtil.getConnection();
+            User loginUser = userDao.login(connection,user);
+            if (loginUser == null){
+                JOptionPane.showMessageDialog(null,"账号或密码错误","登录失败",JOptionPane.ERROR_MESSAGE);
+            }
+            assert loginUser != null;
+            if (userDao.checkPower(connection,user) == 1){
+                jFrame.dispose();
+                new AdminFrame();
+            }else if (userDao.checkPower(connection,user) == 2){
+                jFrame.dispose();
+                new UserAdminFrame();
+            }
 
+            connection.close();
+        } catch (Exception ex) {
+            throw new RuntimeException(ex);
+        }
     }
 
     public static void main(String[] args) {

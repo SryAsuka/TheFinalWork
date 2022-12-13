@@ -4,14 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9420f1fb-a4f2-411a-b483-151f215317c2" name="变更" comment="Modify the rule &gt;&gt; README.md">
-      <change afterPath="$PROJECT_DIR$/src/main/java/JFrame/LoginFrame.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/JFrame/RegFrame.java" afterDir="false" />
+    <list default="true" id="9420f1fb-a4f2-411a-b483-151f215317c2" name="变更" comment="LoginFrame and RegFrame add">
+      <change afterPath="$PROJECT_DIR$/src/main/java/JFrame/AdminFrame.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/JFrame/GoodsFrame.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/JFrame/ISFrame.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/JFrame/OSFrame.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/JFrame/StocksFrame.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/JFrame/UserAdminFrame.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/JFrame/UserFrame.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/JFrame/WhFrame.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dao/Test_Dao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/b4c8f093-7dd9-4c8b-a702-ead99faf31e4.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/b4c8f093-7dd9-4c8b-a702-ead99faf31e4.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/b4c8f093-7dd9-4c8b-a702-ead99faf31e4/storage_v2/_src_/schema/sys.zb4BAA.zip" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/b4c8f093-7dd9-4c8b-a702-ead99faf31e4/storage_v2/_src_/schema/sys.zb4BAA.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/JFrame/LoginFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/JFrame/LoginFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/JFrame/RegFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/JFrame/RegFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/JFrame/mainFrame.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/GoodsDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/GoodsDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/UserDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/WhDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/WhDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/utils/ToolUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/ToolUtil.java" afterDir="false" />
     </list>
@@ -33,6 +44,12 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/README.md" root0="SKIP_INSPECTION" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/JFrame/GoodsFrame.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/JFrame/ISFrame.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/JFrame/OSFrame.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/JFrame/StocksFrame.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/JFrame/UserFrame.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/JFrame/WhFrame.java" root0="SKIP_INSPECTION" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -62,21 +79,24 @@
     "project.structure.last.edited": "SDK",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.general"
+    "settings.editor.selected.configurable": "database.other"
   },
   "keyToStringList": {
     "DatabaseDriversLRU": [
       "mysql"
+    ],
+    "com.intellij.ide.scratch.LRUPopupBuilder$1/SQL 方言": [
+      "MySQL"
     ]
   }
 }]]></component>
-  <component name="RunManager" selected="应用程序.LoginFrame">
-    <configuration name="DbUtil" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="utils.DbUtil" />
+  <component name="RunManager" selected="应用程序.RegFrame">
+    <configuration name="AdminFrame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="JFrame.AdminFrame" />
       <module name="TheFinalWork" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="utils.*" />
+          <option name="PATTERN" value="JFrame.WhFrame" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -89,7 +109,7 @@
       <module name="TheFinalWork" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="JFrame.*" />
+          <option name="PATTERN" value="JFrame.WhFrame" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -102,7 +122,7 @@
       <module name="TheFinalWork" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="JFrame.*" />
+          <option name="PATTERN" value="JFrame.WhFrame" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -110,19 +130,39 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Test_demo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Test_demo" />
+    <configuration name="Test_Dao" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="dao.Test_Dao" />
       <module name="TheFinalWork" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="dao.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserAdminFrame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="JFrame.UserAdminFrame" />
+      <module name="TheFinalWork" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="JFrame.WhFrame" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="应用程序.LoginFrame" />
         <item itemvalue="应用程序.RegFrame" />
-        <item itemvalue="应用程序.DbUtil" />
-        <item itemvalue="应用程序.Test_demo" />
+        <item itemvalue="应用程序.AdminFrame" />
+        <item itemvalue="应用程序.LoginFrame" />
+        <item itemvalue="应用程序.UserAdminFrame" />
+        <item itemvalue="应用程序.Test_Dao" />
       </list>
     </recent_temporary>
   </component>
@@ -141,7 +181,7 @@
       <workItem from="1670610984872" duration="194000" />
       <workItem from="1670647762176" duration="2968000" />
       <workItem from="1670653157590" duration="1428000" />
-      <workItem from="1670654591878" duration="34385000" />
+      <workItem from="1670654591878" duration="131014000" />
     </task>
     <task id="LOCAL-00001" summary="Project initialization">
       <created>1670587932561</created>
@@ -164,7 +204,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670610593500</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="LoginFrame and RegFrame add">
+      <created>1670739438833</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1670739438833</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -198,7 +245,8 @@
     <MESSAGE value="Project initialization" />
     <MESSAGE value="Add triggers &gt;&gt; README.md" />
     <MESSAGE value="Modify the rule &gt;&gt; README.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="Modify the rule &gt;&gt; README.md" />
+    <MESSAGE value="LoginFrame and RegFrame add" />
+    <option name="LAST_COMMIT_MESSAGE" value="LoginFrame and RegFrame add" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

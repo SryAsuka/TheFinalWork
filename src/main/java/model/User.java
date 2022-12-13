@@ -7,7 +7,7 @@ public class User {
     private String UName;
     private String UPhone;
     //管理员等级 1：最高管理员 2：普通仓管
-    private Integer WPower;
+    private Integer UPower;
 
     public String getUid() {
         return Uid;
@@ -49,11 +49,11 @@ public class User {
         this.UPhone = UPhone;
     }
 
-    public Integer getWPower() {
-        return WPower;
+    public Integer getUPower() {
+        return UPower;
     }
 
-    public void setWPower(Integer WPower) {
-        this.WPower = WPower;
+    public void setUPower(Integer UPower) {
+        this.UPower = UPower;
     }
 }
